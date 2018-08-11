@@ -13,12 +13,11 @@ RUN apk update && apk upgrade && \
     git clone https://github.com/VundleVim/Vundle.vim.git /home/developer/.vim/bundle/Vundle.vim && \
 # Add colorscheme
     mkdir -p /home/developer/.vim/colors/ && \
-    curl https://raw.githubusercontent.com/sonjapeterson/1989.vim/master/colors/1989.vim > /home/developer/.vim/colors/1989.vim && \
-    chown -R developer:developer /home/developer/.vim
+    curl https://raw.githubusercontent.com/sonjapeterson/1989.vim/master/colors/1989.vim > /home/developer/.vim/colors/1989.vim
 
 # Give user config for stuff
-COPY .shellrc .bashrc .vimrc .tmux.conf /home/developer/
-RUN chown developer:developer /home/developer/.shellrc /home/developer/.bashrc /home/developer/.vimrc /home/developer/.tmux.conf
+COPY .shellrc .bashrc .vimrc .tmux.conf .gitconfig /home/developer/
+RUN chown -R developer:developer /home/developer/
 
 USER developer
 WORKDIR /home/developer

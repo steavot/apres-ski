@@ -1,0 +1,27 @@
+[alias]
+co = checkout
+cm = commit
+rb = rebase
+br = branch
+df = diff --color
+fd = diff --name-only
+st = status
+cp = cherry-pick
+hist = log --all --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
+brs = log --branches --graph --pretty='[%C(cyan)%h%Creset]%C(bold cyan)%d%Creset %s'
+lg = log --color --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+untracked = ls-files --others --exclude-standard
+
+[merge]
+tool = vimdiff
+
+[push]
+default = current
+
+[gc]
+auto = 256
+pruneExpire = now
+
+[user]
+email =
+name =
