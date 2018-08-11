@@ -20,6 +20,8 @@ This way, environments won't get bloted with things they don't need.  I can imag
 
 As for specific dependencies of projects:  Projects should atleast have a file defining dependencies.  Better yet they'll have defined a bespoke image to build, run tests and/or deploy in.  Setting up the base-dev to run docker-in-docker will accommodate for this.
 
+As for persistence: developers are likely to want a checkout of a project repo to persist longer than a container (maybe not, but they'll have to be good at regularly pushing their changes).  For this, a checkout of a project repo on the host can be mounted in the container.  As can an ssh socket so the user can use ssh credentials for git in the container.
+
 As for sharing: I will be putting things in the dev images that are a matter of personal preference ([my favourite colorscheme](https://github.com/sonjapeterson/1989.vim) for example).  Others can use my images as a starting point `FROM ...`, and change things in the dockerfile, or fork this repo and define their preferences instead.
 
 ## Structure
