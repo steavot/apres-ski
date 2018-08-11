@@ -1,0 +1,5 @@
+#/bin/bash
+tag=$1
+if [ -z $tag ]; then tag="tip"; fi
+docker build -t steav-base-dev:$tag .
+

@@ -1,0 +1,28 @@
+#!/bin/bash
+# Global preferences
+export EDITOR='/usr/bin/vim'
+export TERM='xterm-256color'
+export PROMPT_COMMAND='history -a'
+
+# Alii for drectory navigation
+alias cd='pushd'
+alias dc='popd'
+alias yo='dirs'
+alias oy='dirs -c'
+
+# Alii of pure lazyness
+alias g='git'
+alias v='vim'
+
+# common commits between two git branches
+alias uncommon='git log --left-right --graph --cherry-pick --oneline'
+
+# Colourful prompts to cheer the day.
+COLOR="0;34m"
+GIT_COLOR="0;33m"
+function color_set { echo "\[\e[$1\]"; }
+function color_reset { color_set "m"; }
+
+export GIT_PS1_SHOWDIRTYSTATE='TRUE'
+export PS1="$(color_set $GIT_COLOR)"'$(__git_ps1 "%s ")'"$(color_set $COLOR)${PS1}$(color_reset)"
+
