@@ -6,7 +6,7 @@ RUN apk update && apk upgrade && \
 # TODO: Add zsh. Need to work out how best to include the oh_my_zsb config in.
 # TODO: Install shellcheck.  It's not available in apk. We'll have to build it.
 #       This might help https://github.com/NLKNguyen/alpine-shellcheck/blob/master/builder/Dockerfile
-# Setup non-root user
+# Create non-root user
     adduser -h /home/developer -s /bin/bash -D -u 7777 developer && \
 # Add Vundle
     mkdir -p /home/developer/.vim/bundle/ && \
@@ -19,8 +19,10 @@ RUN apk update && apk upgrade && \
 COPY .shellrc .bashrc .vimrc .tmux.conf .gitconfig /home/developer/
 RUN chown -R developer:developer /home/developer/
 
+# Setup to run as the developer user
 USER developer
 WORKDIR /home/developer
+ENV TERM=xterm-256color
 
 # Single quotes are not valid JSON
 CMD ["/usr/bin/tmux"]
