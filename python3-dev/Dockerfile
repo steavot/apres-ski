@@ -10,8 +10,8 @@ RUN sudo apk add --no-cache python3 && \
     sudo rm -r /root/.cache
 
 # Install python packages
-COPY packages.txt /tmp/
-RUN sudo pip install -r /tmp/packages.txt
+COPY required_packages.txt extra_packages.txt /home/developer/
+RUN sudo pip install -r /home/developer/required_packages.txt
 
 # Add in python specific vim settings
 COPY .python.vimrc /home/developer/
