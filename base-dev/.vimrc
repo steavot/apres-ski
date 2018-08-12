@@ -13,7 +13,7 @@
 " *****************************************************************************
 " Vundle setup
 " *****************************************************************************
-set nocompatible              " be iMproved, required
+set nocompatible              " required
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -27,12 +27,31 @@ Plugin 'VundleVim/Vundle.vim'
 " Base-dev plugins
 " *****************************************************************************
 " colourschemes
-Plugin 'sonjapeterson/1989.vim'
 Plugin 'sickill/vim-monokai'
 
 " packages
+
+" Some common sense settings
 Plugin 'tpope/vim-sensible'
+
+" Navigation with [ & ]
 Plugin 'tpope/vim-unimpaired'
+
+" git
+Plugin 'tpope/vim-fugitive'
+
+" Surroundings: parentheses, brackets, quotes, etc
+Plugin 'tpope/vim-surround'
+
+" File tree navigation
+Plugin 'scrooloose/nerdtree'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
+
+" Fuzzy match filename navigation
+Plugin 'kien/ctrlp.vim'
+
+" Search for text in project
+Plugin 'mileszs/ack.vim'
 
 " *****************************************************************************
 " Base-dev config
@@ -42,7 +61,6 @@ runtime! plugin/sensible.vim
 
 " And the haters' gonna hate, hate, hate, hate, hate... this Taylor Swift color scheme
 colorscheme 1989
-"colorscheme monokai
 
 " Delete trailing whitespace on save
 autocmd BufWritePre * %s/\s\+$//e
@@ -66,6 +84,27 @@ syntax on
 
 " Spellcheck
 setlocal spell spelllang=en_gb
+
+" *********************
+" Plugin related config
+" *********************
+" Open NERDTree when I call vim on a directory
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists("s:std_in") | exe 'NERDTree' argv()[0] | wincmd p | ene | endif
+
+" Toggle NERDTree
+map <C-n> :NERDTreeToggle<CR>
+
+" Show hidden files
+let NERDTreeShowHidden=1
+let g:ctrlp_show_hidden = 1
+
+" Use ag under the covers of ack.vim
+let g:ackprg = 'ag --vimgrep --smart-case'
+cnoreabbrev ag Ack
+cnoreabbrev aG Ack
+cnoreabbrev Ag Ack
+cnoreabbrev AG Ack
 
 " **************
 " Iron-man mode
