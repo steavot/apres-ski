@@ -16,7 +16,7 @@ I think the key feature of docker, which will make this work well, is that docke
 
 The docker command needed to run each containers can be documented in this repo, and/or on dockerhub.
 
-This way, environments won't get bloted with things they don't need.  I can imagine having several different of these environments open, while working on a project with multiple languages.
+This way, environments won't get bloated with things they don't need.  I can imagine having several different of these environments open, while working on a project with multiple languages.
 
 As for specific dependencies of projects:  Projects should atleast have a file defining dependencies.  Better yet they'll have defined a bespoke image to build, run tests and/or deploy in.  Setting up the base-dev to run docker-in-docker will accommodate for this.
 
@@ -42,13 +42,8 @@ As for sharing: I will be putting things in the dev images that are a matter of 
       * [ctrl-p](https://github.com/ctrlpvim/ctrlp.vim)
       * [etc...](http://vim.wikia.com/wiki/Use_Vim_like_an_IDE)
 
-* bash-dev(from base-dev)
-  * bash (alpine just has sh)
-  * shellcheck
-  * shellcheck integration into vim.
-
 * python3-dev(from base-dev)
-  * python3.7 and pip3 (largely following the example of [python3.7-alpine](https://github.com/docker-library/python/blob/c5afee6efc8512af143b960d82b938bde623943f/3.7/alpine3.8/Dockerfile))
+  * python3.6 and pip3
   * commonly used packages
     * requests
     * pyyaml
@@ -61,13 +56,13 @@ As for sharing: I will be putting things in the dev images that are a matter of 
 
 * haskell,rust,ruby,scala... you get the picture.
 
-# Unknowns... Things I need to google.
+# Unknowns... Things I need to work out/google.
 
-* how docker in docker works
-* getting tmux running inside a container
-* find all the vim plugins needed to have a setup equivalent to an ide.
+* See [issues](www.github.com/steavot/dev-envs/issues) for WIBNIs and unresolved problems.
 
 # Potential problems with this
+
+**These have largely been resolved but kept here for prosterity...**
 
 * [python3.7-alpine](https://github.com/docker-library/python/blob/c5afee6efc8512af143b960d82b938bde623943f/3.7/alpine3.8/Dockerfile) has A LOT of setup in there, between `FROM alpine` and the end of the file.
   * This current model suggest lifting most of that into our python-dev.  That's a lot of stuff to maintain (or more accurately: to sufer from not being maintained).
