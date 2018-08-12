@@ -15,7 +15,7 @@ RUN apk update && apk upgrade && \
     curl https://raw.githubusercontent.com/sonjapeterson/1989.vim/master/colors/1989.vim > /home/developer/.vim/colors/1989.vim
 
 # Give user config for stuff
-COPY .shellrc .bashrc .vimrc .tmux.conf .gitconfig /home/developer/
+COPY .shellrc .bashrc .bash_profile .vimrc .tmux.conf .gitconfig /home/developer/
 RUN chown -R developer:developer /home/developer/
 
 # Setup to run as the developer user
