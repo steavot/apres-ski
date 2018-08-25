@@ -3,7 +3,7 @@ FROM alpine:3.8
 # Packages
 RUN apk update && apk upgrade && \
     apk add tmux bash git openssh vim curl sudo the_silver_searcher && \
-# TODO: Add zsh. Need to work out how best to include the oh_my_zsb config in.
+# TODO: Add zsh. Need to work out how best to include the oh_my_zsh config in.
 # Create non-root user
     adduser -h /home/developer -s /bin/bash -D -u 7777 developer && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
