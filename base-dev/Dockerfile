@@ -7,6 +7,7 @@ RUN apk update && apk upgrade && \
 # Create non-root user
     adduser -h /home/developer -s /bin/bash -D -u 7777 developer && \
     echo "developer ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
+    echo "host-user ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers && \
 # Add Vundle
     mkdir -p /home/developer/.vim/bundle/ && \
     git clone https://github.com/VundleVim/Vundle.vim.git /home/developer/.vim/bundle/Vundle.vim && \
@@ -15,7 +16,7 @@ RUN apk update && apk upgrade && \
     curl https://raw.githubusercontent.com/sonjapeterson/1989.vim/master/colors/1989.vim > /home/developer/.vim/colors/1989.vim
 
 # Give user config for stuff
-COPY .shellrc .bashrc .bash_profile .vimrc .tmux.conf .gitconfig /home/developer/
+COPY .shellrc .bashrc .bash_profile .vimrc .tmux.conf .gitconfig .startup.sh /home/developer/
 RUN chown -R developer:developer /home/developer/
 
 # Setup to run as the developer user
@@ -24,5 +25,5 @@ WORKDIR /home/developer
 ENV TERM=xterm-256color
 
 # Single quotes are not valid JSON
-CMD ["/usr/bin/tmux"]
+CMD ["/home/developer/.startup.sh"]
 
