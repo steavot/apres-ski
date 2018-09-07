@@ -19,6 +19,9 @@ RUN apk update && apk upgrade && \
 COPY .shellrc .bashrc .bash_profile .vimrc .tmux.conf .gitconfig .startup.sh /home/developer/
 RUN chown -R developer:developer /home/developer/
 
+# Install vim plugins
+RUN HOME=/home/developer vim -E -s -c "source /home/developer/.vimrc" -c PluginInstall -c qa
+
 # Setup to run as the developer user
 USER developer
 WORKDIR /home/developer
@@ -26,4 +29,3 @@ ENV TERM=xterm-256color
 
 # Single quotes are not valid JSON
 CMD ["/home/developer/.startup.sh"]
-
