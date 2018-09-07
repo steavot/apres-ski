@@ -19,7 +19,7 @@ docker pull steav/base-dev
 
 To run the image with the current directory mounted in:
 ```
-docker run -it --rm -v $PWD:/home/developer/code steav/base-dev
+docker run -it --rm -v $PWD:/src -e RUN_AS=$UID steav/base-dev
 ```
 
 If you want to push with git from within the container, run:
@@ -28,11 +28,6 @@ If you want to push with git from within the container, run:
 ```
 
 ### Post startup
-
-The environment runs as the `developer` user.  You may wish to change the ownership of the files in your project.
-```
-chown -R developer:developer /home/developer/code
-```
 
 To setup vim, run `vim` and then `:PluginInstall`.
 
