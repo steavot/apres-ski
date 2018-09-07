@@ -11,9 +11,8 @@ See process for [base-dev](../base-dev/README.md), replaceing the image name.
 * python3.6
 * Packages installed:
   * ipython
-  * mypy #Install not working
-  * bandit
-* python specific vim setup #currently nothing
+  * mypy
+  * pytest
+* python specific vim setup
 
-To keep the image as small as possible, ~130MB, only packages required for in-editor linting are included by default. More packages are listed in `extra_packages.txt` to be installed with command `sudo pip install -r ~/extra_packages.txt`
-
+To keep the image as small as possible, only above packages are included by default. More packages that I like are listed in `extra_packages.txt` to be installed with `sudo pip install -r`
