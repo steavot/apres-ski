@@ -1,0 +1,12 @@
+#/bin/bash
+tag=$1
+if [ -z $tag ]; then tag="latest"; fi
+
+echo "Copying contents of ../base-dev into pwd"
+for thing in $(ls -A ../base-dev); do cp ../base-dev/$thing .; done
+
+docker build -t steav/base-dev-alpine:$tag .
+
+echo "Removing contents of ../base-dev from pwd"
+for thing in $(ls -A ../base-dev); do rm $thing; done
+

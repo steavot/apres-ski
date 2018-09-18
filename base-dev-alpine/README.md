@@ -1,6 +1,6 @@
-# Base-dev
+# Base-dev-apline
 
-This environment contains the bare necessities for editing and maintaining code.  vim & git.
+This alpine environment contains the bare necessities for editing and maintaining code.  vim & git basically.
 
 Upon running this container, you are dropped into a tmux session, running bash.
 
@@ -12,14 +12,14 @@ Upon running this container, you are dropped into a tmux session, running bash.
 ## Installation
 
 ```
-docker pull steav/base-dev
+docker pull steav/base-dev-alpine
 ```
 
 ## Usage
 
 To run the image with the current directory mounted in:
 ```
-docker run -it --rm -v $PWD:/src -e RUN_AS=$UID steav/base-dev
+docker run -it --rm -v $PWD:/src -e RUN_AS=$UID steav/base-dev-alpine
 ```
 
 If you want to push with git from within the container, run:
