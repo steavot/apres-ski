@@ -1,0 +1,5 @@
+#/bin/bash
+tag=$1
+if [ -z $tag ]; then tag="latest"; fi
+docker build -t steav/rust-dev-slim:$tag .
+
